@@ -8,6 +8,7 @@ import com.example.navegacion.ViewModel.Counter
 import com.example.navegacion.presentation.views.HomeView
 import com.example.navegacion.presentation.views.DetailsView
 import com.example.navegacion.presentation.views.DetailsView2
+import com.example.navegacion.presentation.views.DetailsView3
 
 
 @Composable
@@ -25,6 +26,9 @@ fun NavManager(counter: Counter){
         }
         composable("Details2") {
             DetailsView2(navController, counter)
+        }
+        composable ("Details3"){
+            DetailsView3(navController)
         }
     }
 }

@@ -48,7 +48,7 @@ fun Content(innerPaddingValues: PaddingValues, navController: NavController){
             navController.navigate("Details2")
         })
         NormalButton("Click 3", onClick = {
-            navController.navigate("Details2")
+            navController.navigate("Details3")
         })
         CustomOutlinedButton()
         CustomIconButton()
