@@ -58,9 +58,7 @@ fun DetailsContent3(innerPaddingValues: PaddingValues){
             Text("Cliackeame bro")
         }
         if (ver) {
-
-
-
+            Text("ID: ${students[0].id} Name: ${students[0].name}\n ${students[0].description}")
         }
     }
 }
