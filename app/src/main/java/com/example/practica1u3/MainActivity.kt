@@ -12,6 +12,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.practica1u3.Data.ApplicationClass
 import com.example.practica1u3.Data.InterfaceStudent.StudentDAO
 import com.example.practica1u3.Data.viewModels.StudentFactory
 import com.example.practica1u3.Data.viewModels.studentViewModel
@@ -23,8 +24,10 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            val viewModelStudent = studentViewModel by viewModels {
-                StudentFactory(StudentDAO)
+            val viewModelStudent: studentViewModel by viewModels {
+                val database = (application as ApplicationClass).database
+                val studentDao = database.StudentDao()
+                StudentFactory(studentDao)
             }
             Practica1U3Theme {
                 NavManager(viewModelStudent)

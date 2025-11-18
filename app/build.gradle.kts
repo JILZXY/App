@@ -2,7 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    id("com.google.devtools.ksp")
+    id("com.google.devtools.ksp") version "2.0.21-1.0.27"
 }
 
 android {
@@ -61,10 +61,9 @@ dependencies {
     val nav_version = "2.9.5"
     implementation("androidx.navigation:navigation-compose:$nav_version")
     implementation("androidx.datastore:datastore-preferences:1.1.1")
-    val room_version = "2.8.3"
+    val room_version = "2.6.1"
     implementation("androidx.room:room-runtime:$room_version")
-    implementation("androidx.room:room-ktx:2.8.3")
-    annotationProcessor("androidx.room:room-compiler:$room_version")
+    implementation("androidx.room:room-ktx:2.8.3") // <-- Problema aquí
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
     ksp("androidx.room:room-compiler:$room_version")
 }

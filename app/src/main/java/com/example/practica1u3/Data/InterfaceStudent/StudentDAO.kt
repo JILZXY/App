@@ -7,11 +7,12 @@ import androidx.room.Query
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Update
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface StudentDAO {
     @Query("SELECT * FROM students")
-    suspend fun getAll(): List<Student>
+    fun getAll(): Flow<List<Student>>
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(vararg student: Student)
     @Delete()
@@ -20,8 +21,9 @@ interface StudentDAO {
     suspend fun update(vararg student: Student)
     @Query("SELECT AVG(score) FROM students")
     suspend fun getAverage(): Float
-    @Query("SELECT * FROM students ORDER BY score DESC LIMIT 3")
-    suspend fun getTop3(): List<Student>
+    @Query("SELECT * FROM students WHERE `group` = :group ORDER BY score DESC LIMIT 3")
+    suspend fun getTop3(group: String): List<Student>
     @Query("SELECT MIN(score) FROM students")
     suspend fun getMin(): Float
+
 }
